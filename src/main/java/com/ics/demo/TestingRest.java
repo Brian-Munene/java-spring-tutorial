@@ -16,7 +16,7 @@ public class TestingRest implements CommandLineRunner {
         RestTemplate restTemplate = new RestTemplate();
 
         ResponseEntity<List<Movie>> response = restTemplate.exchange(
-                "http://10.51/10.111:9090/movies",
+                "http://10.51.10.111:9090/movies",
                 HttpMethod.GET,
                 null,
                 new ParameterizedTypeReference<List<Movie>>() {});
