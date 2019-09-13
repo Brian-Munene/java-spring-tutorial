@@ -22,5 +22,16 @@ public class TestingRest implements CommandLineRunner {
                 new ParameterizedTypeReference<List<Movie>>() {});
         List<Movie> movies = response.getBody();
         System.out.println(movies.toString());
+
+        Movie movie = restTemplate.getForObject("http://10.51.10.111:9090/movies/1", Movie.class);
+
+        System.err.println(movie.toString());
+
+        String url = "http://10.51.10.111:9090/movies/search?name="+movie.getName() ;
+        Movie movieByName = restTemplate.getForObject(
+                url,
+                Movie.class);
+        System.err.println(movieByName.toString());
+
     }
 }

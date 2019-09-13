@@ -3,6 +3,7 @@ package com.ics.demo.models;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -24,7 +25,7 @@ public class Movie {
     private String yearReleased;
 
     @ManyToMany(mappedBy = "movies")
-    private Set<Category> categories;
+    private Set<Category> categories = new HashSet<>();
     public Movie(String name, String year, Set<Category> categories) {
         this.name = name;
         this.yearReleased = year;
