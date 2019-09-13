@@ -73,4 +73,15 @@ public class Movie {
     public interface Create{}
 
     public interface Update{}
+
+    @Override
+    public String toString() {
+        return "Movie{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", yearReleased='" + yearReleased + '\'' +
+                ", categories=" + categories +
+                ", actors=" + actors +
+                '}';
+    }
 }
