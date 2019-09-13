@@ -34,8 +34,8 @@ public class ActorController {
     }
 
     @DeleteMapping
-    public void delete(@PathVariable Actor actor){
-        actorService.delete(actor);
+    public void delete(@PathVariable Long actorId){
+        actorService.delete(actorId);
     }
 
     @PatchMapping

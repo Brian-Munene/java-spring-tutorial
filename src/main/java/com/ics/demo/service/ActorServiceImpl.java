@@ -29,21 +29,27 @@ public class ActorServiceImpl implements ActorService{
 
     @Override
     public Actor create(Actor actor) {
-        return null;
+
+        return actorRepository.save(actor);
     }
 
     @Override
-    public void delete(Actor actor) {
-
+    public void delete(Long actorId) {
+        actorRepository.deleteById(actorId);
     }
 
     @Override
     public Actor update(Actor actor) {
+//        Actor foundActor = findById(actor.getId());
+//        foundActor.setName(actor.getName());
+//        return actorRepository.save(foundActor);
         return null;
     }
 
     @Override
     public Actor update(Long id, Actor actor) {
-        return null;
+        Actor foundMovie = findById(id);
+        foundMovie.setName(actor.getName());
+        return actorRepository.save(foundMovie);
     }
 }

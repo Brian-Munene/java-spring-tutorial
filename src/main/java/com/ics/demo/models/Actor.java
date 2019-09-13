@@ -1,5 +1,7 @@
 package com.ics.demo.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -9,20 +11,34 @@ public class Actor {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
-    private String id;
+    private Long id;
 
     @Column(name = "name")
     private String name;
 
-    public Actor(String name) {
-        this.name = name;
+    public Movie setMovie(Movie movie) {
+        return this.movie;
     }
 
-    public String getId() {
+    @JsonIgnore
+    @ManyToOne
+    @JoinColumn(name = "movie_id_fk")
+    private Movie movie;
+
+    public Actor(String name, Movie Movie) {
+        this.name = name;
+        this.movie = movie;
+    }
+
+    private Actor() {
+
+    }
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -33,6 +49,8 @@ public class Actor {
     public void setName(String name) {
         this.name = name;
     }
+
+
 
     public interface Create{}
 

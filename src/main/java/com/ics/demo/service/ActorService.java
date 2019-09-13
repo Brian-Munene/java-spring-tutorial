@@ -12,7 +12,7 @@ public interface ActorService {
 
     Actor create(Actor actor);
 
-    void delete(Actor actor);
+    void delete(Long actorId);
 
     Actor update(Actor actor);
 

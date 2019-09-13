@@ -1,6 +1,7 @@
 package com.ics.demo.service;
 
 import com.ics.demo.NotFoundException;
+import com.ics.demo.models.Actor;
 import com.ics.demo.models.Movie;
 import com.ics.demo.repositories.MovieRepository;
 import org.springframework.stereotype.Service;
@@ -10,9 +11,11 @@ import java.util.List;
 @Service
 public class MovieServiceImpl implements MovieService {
 
+    private final ActorService actorService;
     private final MovieRepository movieRepository;
 
-    public MovieServiceImpl(MovieRepository movieRepository) {
+    public MovieServiceImpl(ActorService actorService, MovieRepository movieRepository) {
+        this.actorService = actorService;
         this.movieRepository = movieRepository;
     }
 
@@ -52,4 +55,11 @@ public class MovieServiceImpl implements MovieService {
         foundMovie.setYearReleased(movie.getYearReleased());
         return movieRepository.save(foundMovie);
     }
+
+    @Override
+    public Actor createActor(Long id, Actor actor) {
+        Movie movie = findById(id);
+        actor.setMovie(movie);
+        return actorService.create(actor);
+        }
 }
