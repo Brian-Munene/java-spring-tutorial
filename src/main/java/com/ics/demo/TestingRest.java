@@ -11,6 +11,12 @@ import java.util.List;
 
 public class TestingRest implements CommandLineRunner {
 
+    private final FeignRestClient feignRestClient;
+
+    public TestingRest(FeignRestClient feignRestClient) {
+        this.feignRestClient = feignRestClient;
+    }
+
     @Override
     public void run(String... args) throws Exception {
         RestTemplate restTemplate = new RestTemplate();
@@ -32,6 +38,9 @@ public class TestingRest implements CommandLineRunner {
                 url,
                 Movie.class);
         System.err.println(movieByName.toString());
+
+        movies = feignRestClient.getAllMovies();
+        System.err.println(movies.toString());
 
     }
 }
