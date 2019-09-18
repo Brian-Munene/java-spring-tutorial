@@ -26,10 +26,10 @@ public class Movie {
 
     @ManyToMany(mappedBy = "movies")
     private Set<Category> categories = new HashSet<>();
-    public Movie(String name, String year, Set<Category> categories) {
+    public Movie(String name, String year) {
         this.name = name;
         this.yearReleased = year;
-        this.categories.addAll(categories);
+        //this.categories.addAll(categories);
     }
 
     private Movie(){

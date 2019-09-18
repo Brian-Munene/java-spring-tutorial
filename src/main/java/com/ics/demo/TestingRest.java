@@ -5,10 +5,11 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
-
+@Component
 public class TestingRest implements CommandLineRunner {
 
     private final FeignRestClient feignRestClient;
@@ -29,7 +30,7 @@ public class TestingRest implements CommandLineRunner {
         List<Movie> movies = response.getBody();
         System.out.println(movies.toString());
 
-        Movie movie = restTemplate.getForObject("http://10.51.10.111:9090/movies/1", Movie.class);
+        Movie movie = restTemplate.getForObject("http://10.51.10.111:9090/movies/34", Movie.class);
 
         System.err.println(movie.toString());
 
@@ -39,8 +40,16 @@ public class TestingRest implements CommandLineRunner {
                 Movie.class);
         System.err.println(movieByName.toString());
 
+        Movie newMovie = new Movie("Annabelle", "2019");
+        newMovie = feignRestClient.createMovie(newMovie);
+
+        System.out.println("Created movie:" + newMovie.toString());
         movies = feignRestClient.getAllMovies();
         System.err.println(movies.toString());
+        Movie changedMovie = feignRestClient.findById(newMovie.getId());
+
+
+
 
     }
 }

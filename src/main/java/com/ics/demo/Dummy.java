@@ -36,8 +36,8 @@ public class Dummy implements CommandLineRunner {
 
 
 
-        Movie movie = new Movie("Bad Boys for life", "2020", categories);
-        Movie movie1 = new Movie("The Exorcist", "2017", categories);
+        Movie movie = new Movie("Bad Boys for life", "2020");
+        Movie movie1 = new Movie("The Exorcist", "2017");
         category.addMovie(movie);
         category.addMovie(movie1);
 
