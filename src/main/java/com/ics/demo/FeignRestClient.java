@@ -21,6 +21,6 @@ public interface FeignRestClient {
     @RequestMapping(method = RequestMethod.POST, value = "movies")
     Movie createMovie(@RequestBody Movie movie);
 
-    @RequestMapping(method = RequestMethod.PATCH, value = "movies")
-    Movie updateMovie(Long id, RequestBody Movie movie);
+    @RequestMapping(method = RequestMethod.PATCH, value = "movies/{id}")
+    Movie updateMovie(@PathVariable(name = "id") Long id, @RequestBody Movie newMovie);
 }

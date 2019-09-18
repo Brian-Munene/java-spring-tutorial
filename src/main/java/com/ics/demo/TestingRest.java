@@ -30,7 +30,7 @@ public class TestingRest implements CommandLineRunner {
         List<Movie> movies = response.getBody();
         System.out.println(movies.toString());
 
-        Movie movie = restTemplate.getForObject("http://10.51.10.111:9090/movies/34", Movie.class);
+        Movie movie = restTemplate.getForObject("http://10.51.10.111:9090/movies/4", Movie.class);
 
         System.err.println(movie.toString());
 
@@ -46,7 +46,9 @@ public class TestingRest implements CommandLineRunner {
         System.out.println("Created movie:" + newMovie.toString());
         movies = feignRestClient.getAllMovies();
         System.err.println(movies.toString());
-        Movie changedMovie = feignRestClient.findById(newMovie.getId());
+
+        newMovie.setName("what it do babyyyy");
+        feignRestClient.updateMovie(newMovie.getId(), newMovie);
 
 
 
