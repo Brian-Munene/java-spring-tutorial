@@ -25,7 +25,7 @@ public class Actor {
     @JoinColumn(name = "movie_id_fk")
     private Movie movie;
 
-    public Actor(String name, Movie Movie) {
+    public Actor(String name, Movie movie) {
         this.name = name;
         this.movie = movie;
     }
