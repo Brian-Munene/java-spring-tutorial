@@ -1,18 +1,9 @@
 package com.ics.demo;
 
-import com.ics.demo.models.Appointment;
-import com.ics.demo.models.Movie;
-import com.ics.demo.models.Student;
-import com.ics.demo.models.Teacher;
+import com.ics.demo.models.*;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.core.ParameterizedTypeReference;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
-import org.springframework.web.client.RestTemplate;
 
-import java.util.Collection;
-import java.util.List;
 @Component
 public class TestingRest implements CommandLineRunner {
 
@@ -82,8 +73,12 @@ public class TestingRest implements CommandLineRunner {
         CAT
          */
 
-        Student newStudent = feignRestClient.registerStudent(new Student("94233", "Brian"));
-        System.out.println("Created Student:" + newStudent.toString());
+//        Student newStudent = feignRestClient.registerStudent(new Student("94233", "Brian"));
+//        System.out.println("Created Student:" + newStudent.toString());
+
+        Attachment attachments = feignRestClient.requestAttachment(6,27);
+        System.out.println("Attachment:" + attachments);
+
 
 
     }
