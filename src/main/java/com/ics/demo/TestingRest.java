@@ -62,7 +62,7 @@ public class TestingRest implements CommandLineRunner {
         /*
          * Mock- CAT
          * */
-        Student newStudent = new Student("94233","Brian");
+//        Student newStudent = new Student("94233","Brian");
 //        newStudent = feignRestClient.registerStudent(newStudent);
 //        System.out.println("Created Student:" + newStudent.toString());
 
@@ -76,7 +76,15 @@ public class TestingRest implements CommandLineRunner {
 //        newAppointment = feignRestClient.createAppointment(newAppointment);
 //        System.out.println("Created Appointment" + newAppointment);
 
-        feignRestClient.confirmAppointment((long)9, (long)5);
+//        feignRestClient.confirmAppointment((long)9, (long)5);
+
+        /*
+        CAT
+         */
+
+        Student newStudent = feignRestClient.registerStudent(new Student("94233", "Brian"));
+        System.out.println("Created Student:" + newStudent.toString());
+
 
     }
 }
