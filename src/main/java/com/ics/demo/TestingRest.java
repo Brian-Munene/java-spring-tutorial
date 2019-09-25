@@ -76,10 +76,12 @@ public class TestingRest implements CommandLineRunner {
 //        Student newStudent = feignRestClient.registerStudent(new Student("94233", "Brian"));
 //        System.out.println("Created Student:" + newStudent.toString());
 
-        Attachment attachments = feignRestClient.requestAttachment(6,27);
-        System.out.println("Attachment:" + attachments);
-
-
+//        Attachment attachments = feignRestClient.requestAttachment(6,27);
+//        System.out.println("Attachment:" + attachments);
+//
+//        Attachment department = feignRestClient.requestDepartment(6,27,12);
+//        System.out.println("Got department" + department);
+        Attachment deleted = feignRestClient.deleteDepartment(new Department(27,6,12));
 
     }
 }

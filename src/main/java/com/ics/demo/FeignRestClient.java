@@ -48,4 +48,12 @@ public interface FeignRestClient {
     @RequestMapping(method = RequestMethod.POST, value = "companies/{companyId}/attachments")
     Attachment requestAttachment(@PathVariable int companyId, @RequestParam(name = "studentId")Integer studentId);
 
+    @RequestMapping(method = RequestMethod.PATCH, value = "companies/{companyId}/attachments")
+    Attachment requestDepartment(@PathVariable(name = "companyId")int companyId,
+                                 @RequestParam(name = "studentId")Integer studentId,
+                                 @RequestParam(name = "departmentId") Integer departmentId);
+
+    @RequestMapping(method = RequestMethod.DELETE, value = "departments")
+    Attachment deleteDepartment(Department department);
+
 }

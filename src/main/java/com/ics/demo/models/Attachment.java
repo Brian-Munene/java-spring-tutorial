@@ -4,6 +4,7 @@ public class Attachment {
     private long studentId;
     private int companyId;
 
+
     public Attachment(long studentId, int companyId) {
         this.studentId = studentId;
         this.companyId = companyId;
